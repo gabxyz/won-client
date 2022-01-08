@@ -12,7 +12,7 @@ describe('<Banner />', () => {
       buttonLabel: 'Buy now',
       buttonLink: '/games/defy-death'
     }
-    renderWithTheme(<Banner {...props} />)
+    const { container } = renderWithTheme(<Banner {...props} />)
 
     expect(
       screen.getByRole('heading', { name: /defy death/i })
@@ -23,5 +23,7 @@ describe('<Banner />', () => {
     ).toBeInTheDocument()
 
     expect(screen.getByRole('img', { name: /defy death/i })).toBeInTheDocument()
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 })
