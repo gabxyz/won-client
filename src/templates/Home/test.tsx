@@ -10,13 +10,13 @@ import Home, { HomeTemplateProps } from '.'
 
 const props: HomeTemplateProps = {
   banners: bannerMock,
-  newGames: gamesMock,
+  newGames: [gamesMock[0]],
   mostPopularHighlight: highlightMock,
-  mostPopularGames: gamesMock,
-  upcomingGames: gamesMock,
+  mostPopularGames: [gamesMock[0]],
+  upcomingGames: [gamesMock[0]],
   upcomingHighlight: highlightMock,
-  upcomingMoreGames: gamesMock,
-  freeGames: gamesMock,
+  upcomingMoreGames: [gamesMock[0]],
+  freeGames: [gamesMock[0]],
   freeHighlight: highlightMock
 }
 
@@ -29,10 +29,6 @@ describe('<Home />', () => {
       screen.getByRole('heading', { name: /follow us/i })
     ).toBeInTheDocument()
     expect(screen.getAllByRole('img', { name: /won games/i })).toHaveLength(2)
-  })
-
-  it('should render the sections', () => {
-    renderWithTheme(<Home {...props} />)
 
     expect(screen.getByRole('heading', { name: /news/i })).toBeInTheDocument()
     expect(
@@ -44,14 +40,11 @@ describe('<Home />', () => {
     expect(
       screen.getByRole('heading', { name: /free games/i })
     ).toBeInTheDocument()
-  })
 
-  it('should render section elements', () => {
-    renderWithTheme(<Home {...props} />)
     // banner
     expect(screen.getAllByText(/defy death 1/i)).toHaveLength(1)
-    // card game ( 5 sections com 4 cards cada = 5x4 = 20)
-    expect(screen.getAllByText(/population zero/i)).toHaveLength(20)
+    // card game 5 sections with 1 card each = 5x1 = 5
+    expect(screen.getAllByText(/population zero/i)).toHaveLength(5)
     // highlight
     expect(screen.getAllByText(/red dead is back!/i)).toHaveLength(3)
   })
