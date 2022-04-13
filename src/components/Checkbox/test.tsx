@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react'
+import theme from 'styles/theme'
 import { renderWithTheme } from 'utils/tests/helpers'
 
 import Checkbox from '.'
@@ -16,5 +17,15 @@ describe('<Checkbox />', () => {
     renderWithTheme(<Checkbox />)
 
     expect(screen.queryByLabelText('testCheck')).not.toBeInTheDocument()
+  })
+
+  it('should render with back label', () => {
+    renderWithTheme(
+      <Checkbox label="checkbox label" labelFor="check" labelColor="black" />
+    )
+
+    expect(screen.getByText(/checkbox label/i)).toHaveStyle({
+      color: theme.colors.black
+    })
   })
 })
