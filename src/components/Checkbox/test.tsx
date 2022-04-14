@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event'
 import Checkbox from '.'
 
 describe('<Checkbox />', () => {
-  it('should render with label', () => {
+  it('should render with white label', () => {
     renderWithTheme(<Checkbox label="checkbox label" labelFor="check" />)
 
     expect(screen.getByRole('checkbox')).toBeInTheDocument()
@@ -14,13 +14,13 @@ describe('<Checkbox />', () => {
     expect(screen.getByText(/checkbox label/i)).toHaveAttribute('for', 'check')
   })
 
-  it('should render without label', () => {
+  it('should render without a label', () => {
     renderWithTheme(<Checkbox />)
 
     expect(screen.queryByLabelText('testCheck')).not.toBeInTheDocument()
   })
 
-  it('should render with back label', () => {
+  it('should render with black label', () => {
     renderWithTheme(
       <Checkbox label="checkbox label" labelFor="check" labelColor="black" />
     )
