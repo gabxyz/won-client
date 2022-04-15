@@ -7,14 +7,19 @@ import Radio from '.'
 
 describe('<Radio />', () => {
   it('should render with white label', () => {
-    renderWithTheme(<Radio label="radio label" labelFor="radio" />)
+    const { container } = renderWithTheme(
+      <Radio label="radio" labelFor="radioCheck" value="testVal" />
+    )
 
-    expect(screen.getByRole('radio')).toBeInTheDocument()
-    expect(screen.getByLabelText(/radio label/i)).toBeInTheDocument()
-    expect(screen.getByText(/radio label/i)).toHaveAttribute('for', 'radio')
+    const label = screen.getByText('radio')
+    expect(label).toBeInTheDocument()
+    expect(label).toHaveStyle({
+      color: theme.colors.white
+    })
+    expect(container.firstChild).toMatchSnapshot()
   })
 
-  it('should rende without a label', () => {
+  it('should render without a label', () => {
     renderWithTheme(<Radio />)
 
     expect(screen.queryByLabelText('testRadio')).not.toBeInTheDocument()
@@ -50,10 +55,12 @@ describe('<Radio />', () => {
   it('should be accessible with tab', () => {
     renderWithTheme(<Radio label="Radio" labelFor="Radio" />)
 
+    const radio = screen.getByLabelText('Radio')
+
     expect(document.body).toHaveFocus()
 
     userEvent.tab()
 
-    expect(screen.getByLabelText(/radio/i)).toHaveFocus()
+    expect(radio).toHaveFocus()
   })
 })
