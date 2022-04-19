@@ -42,6 +42,20 @@ describe('<TextField />', () => {
     expect(screen.getByTestId('icon').parentElement).toHaveStyle({ order: 1 })
   })
 
+  it('should render with the error message', () => {
+    const { container } = renderWithTheme(
+      <TextField
+        icon={<Email data-testid="icon" />}
+        label="TextField"
+        labelFor="TextField"
+        error="test error message"
+      />
+    )
+
+    expect(screen.getByText('test error message')).toBeInTheDocument()
+    expect(container.firstChild).toMatchSnapshot()
+  })
+
   it('should change the value when typing', async () => {
     const onInput = jest.fn()
 

@@ -11,7 +11,8 @@ export default {
     id: 'Email',
     initialValue: '',
     placeholder: 'john.doe@gmail.com',
-    disabled: false
+    disabled: false,
+    icon: <Email />
   },
   argTypes: {
     onInput: { action: 'changed' },
@@ -21,6 +22,12 @@ export default {
 
 export const Default: Story<TextFieldProps> = (args) => (
   <div style={{ maxWidth: 300, padding: 15 }}>
-    <TextField icon={<Email />} {...args} />
+    <TextField {...args} />
+  </div>
+)
+
+export const withError: Story<TextFieldProps> = (args) => (
+  <div style={{ maxWidth: 300, padding: 15 }}>
+    <TextField error="Oops...Something about this is wrong" {...args} />
   </div>
 )
