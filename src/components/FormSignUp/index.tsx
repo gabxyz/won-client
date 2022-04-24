@@ -28,7 +28,7 @@ const FormSignUp = () => (
         icon={<Lock />}
       />
       <TextField
-        name="password"
+        name="confirm-password"
         placeholder="Confirm password"
         type="password"
         icon={<Lock />}
