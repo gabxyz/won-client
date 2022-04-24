@@ -4,10 +4,10 @@ import Link from 'next/link'
 import TextField from 'components/TextField'
 import Button from 'components/Button'
 
-import * as S from './styles'
+import { FormWrapper, FormLink } from 'components/Form'
 
 const FormSignUp = () => (
-  <S.Wrapper>
+  <FormWrapper>
     <form>
       <TextField
         name="name"
@@ -36,14 +36,14 @@ const FormSignUp = () => (
       <Button size="large" fullWidth>
         Sign up now
       </Button>
-      <S.FormLink>
+      <FormLink>
         Already have an account?{' '}
         <Link href="sign-in">
           <a>Sign in</a>
         </Link>
-      </S.FormLink>
+      </FormLink>
     </form>
-  </S.Wrapper>
+  </FormWrapper>
 )
 
 export default FormSignUp
