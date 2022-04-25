@@ -1,12 +1,13 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-export const Wrapper = styled.menu`
-  ${({ theme }) => css`
+export const Wrapper = styled.menu<MenuFullProps>`
+  ${({ theme, isOpen }) => css`
     display: flex;
     align-items: center;
     padding: ${theme.spacings.small} 0;
     position: relative;
+    z-index: ${isOpen ? theme.layers.menu : `calc(${theme.layers.menu} - 1)`};
   `}
 `
 export const LogoWrapper = styled.div`
@@ -88,7 +89,8 @@ export const MenuFull = styled.nav<MenuFullProps>`
     flex-direction: column;
     justify-content: space-between;
     background: ${theme.colors.white};
-    position: absolute;
+    position: fixed;
+    z-index: ${theme.layers.menu};
     top: 0;
     bottom: 0;
     left: 0;
@@ -98,6 +100,7 @@ export const MenuFull = styled.nav<MenuFullProps>`
     transition: opacity ${theme.transition.default};
     opacity: ${isOpen ? 1 : 0};
     pointer-events: ${isOpen ? 'all' : 'none'};
+    visibility: ${isOpen ? 'visible' : 'hidden'};
 
     > svg {
       position: absolute;
