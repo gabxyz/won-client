@@ -1,7 +1,10 @@
 import * as S from './styles'
 import Heading from 'components/Heading'
 import Button from 'components/Button'
-import { AddShoppingCart, FavoriteBorder } from 'styled-icons/material-outlined'
+import {
+  AddShoppingCart,
+  FavoriteBorder
+} from '@styled-icons/material-outlined'
 import Ribbon from 'components/Ribbon'
 
 export type GameInfoProps = {
