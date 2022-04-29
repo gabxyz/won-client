@@ -2,6 +2,7 @@ import * as S from './styles'
 import Heading from 'components/Heading'
 import Button from 'components/Button'
 import { AddShoppingCart, FavoriteBorder } from 'styled-icons/material-outlined'
+import Ribbon from 'components/Ribbon'
 
 export type GameInfoProps = {
   title: string
@@ -14,13 +15,18 @@ const GameInfo = ({ title, description, price }: GameInfoProps) => (
     <Heading color="black" lineBottom>
       {title}
     </Heading>
+
+    <Ribbon color="secondary">{`$${price}`}</Ribbon>
+
     <S.Description>{description}</S.Description>
-    <S.Price>{price}</S.Price>
+
     <S.ButtonsWrapper>
-      <Button icon={<FavoriteBorder />} minimal>
+      <Button icon={<FavoriteBorder />} size="large" minimal>
         Wishlist
       </Button>
-      <Button icon={<AddShoppingCart />}>Add to cart</Button>
+      <Button icon={<AddShoppingCart />} size="large">
+        Add to cart
+      </Button>
     </S.ButtonsWrapper>
   </S.Wrapper>
 )
