@@ -12,6 +12,9 @@ export default {
   argTypes: {
     cards: {
       type: 'symbol'
+    },
+    handlePayment: {
+      action: 'clicked'
     }
   },
   parameters: {
