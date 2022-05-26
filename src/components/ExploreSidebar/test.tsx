@@ -5,6 +5,8 @@ import userEvent from '@testing-library/user-event'
 import ExploreSidebar from '.'
 
 import items from './mock'
+import { Overlay } from './styles'
+import { css } from 'styled-components'
 
 describe('<ExploreSidebar />', () => {
   it('should render headings', () => {
@@ -98,6 +100,35 @@ describe('<ExploreSidebar />', () => {
 
     await waitFor(() => {
       expect(onFilter).toBeCalledWith({ sort_by: 'high-to-low' })
+    })
+  })
+
+  it('should open/close sidebar when filtering on mobile', async () => {
+    const { container } = renderWithTheme(
+      <ExploreSidebar items={items} onFilter={jest.fn} />
+    )
+
+    const variant = {
+      media: '(max-width:768px)',
+      modifier: String(css`
+        ${Overlay}
+      `)
+    }
+
+    const Element = container.firstChild
+
+    expect(Element).not.toHaveStyleRule('opacity', '1', variant)
+
+    userEvent.click(screen.getByLabelText(/open filters/))
+
+    await waitFor(() => {
+      expect(Element).toHaveStyleRule('opacity', '1', variant)
+    })
+
+    userEvent.click(screen.getByLabelText(/close filters/))
+
+    await waitFor(() => {
+      expect(Element).not.toHaveStyleRule('opacity', '1', variant)
     })
   })
 })
