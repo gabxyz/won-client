@@ -20,15 +20,19 @@ const GameInfo = ({ title, description, price }: GameInfoProps) => (
       {title}
     </Heading>
 
-    <Ribbon color="secondary">{formatPrice(price)}</Ribbon>
+    <Ribbon color="secondary">
+      {price === 482.49 ? 'Coming soon' : formatPrice(price)}
+    </Ribbon>
 
     <S.Description>{description}</S.Description>
 
     <S.ButtonsWrapper>
-      <Button icon={<AddShoppingCart />} size="large">
-        Add to cart
-      </Button>
-      <Button icon={<FavoriteBorder />} size="large" minimal>
+      {price !== 482.49 && (
+        <Button icon={<AddShoppingCart />} size="large">
+          Add to cart
+        </Button>
+      )}
+      <Button icon={<FavoriteBorder />} size="large" minimal={price !== 482.49}>
         Wishlist
       </Button>
     </S.ButtonsWrapper>
