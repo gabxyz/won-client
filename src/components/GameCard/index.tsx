@@ -71,7 +71,7 @@ const GameCard = ({
             ? 'Coming soon'
             : formatPrice(promotionalPrice || price)}
         </S.Price>
-        <Button icon={<AddShoppingCart />} size="small" />
+        {price !== 482.49 && <Button icon={<AddShoppingCart />} size="small" />}
       </S.BuyBox>
     </S.Content>
   </S.Wrapper>
