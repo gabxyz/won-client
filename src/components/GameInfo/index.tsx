@@ -14,29 +14,44 @@ export type GameInfoProps = {
   price: number
 }
 
-const GameInfo = ({ title, description, price }: GameInfoProps) => (
-  <S.Wrapper>
-    <Heading color="black" lineBottom>
-      {title}
-    </Heading>
+const GameInfo = ({ title, description, price }: GameInfoProps) => {
+  const handlePrice = (price: number) => {
+    if (price === 0) {
+      return 'FREE'
+    }
+    if (price === 482.49) {
+      return 'Coming Soon'
+    }
 
-    <Ribbon color="secondary">
-      {price === 482.49 ? 'Coming soon' : formatPrice(price)}
-    </Ribbon>
+    return formatPrice(price)
+  }
 
-    <S.Description>{description}</S.Description>
+  return (
+    <S.Wrapper>
+      <Heading color="black" lineBottom>
+        {title}
+      </Heading>
 
-    <S.ButtonsWrapper>
-      {price !== 482.49 && (
-        <Button icon={<AddShoppingCart />} size="large">
-          Add to cart
+      <Ribbon color="secondary">{handlePrice(price)}</Ribbon>
+
+      <S.Description>{description}</S.Description>
+
+      <S.ButtonsWrapper>
+        {price !== 482.49 && (
+          <Button icon={<AddShoppingCart />} size="large">
+            Add to cart
+          </Button>
+        )}
+        <Button
+          icon={<FavoriteBorder />}
+          size="large"
+          minimal={price !== 482.49}
+        >
+          Wishlist
         </Button>
-      )}
-      <Button icon={<FavoriteBorder />} size="large" minimal={price !== 482.49}>
-        Wishlist
-      </Button>
-    </S.ButtonsWrapper>
-  </S.Wrapper>
-)
+      </S.ButtonsWrapper>
+    </S.Wrapper>
+  )
+}
 
 export default GameInfo
