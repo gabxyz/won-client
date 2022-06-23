@@ -62,16 +62,23 @@ const GameCard = ({
           <FavoriteBorder aria-label="Add to wishlist" />
         )}
       </S.FavButton>
+
       <S.BuyBox role="price">
         {!!promotionalPrice && (
           <S.Price isPromotional>{formatPrice(price)}</S.Price>
         )}
-        <S.Price>
-          {price === 482.49
-            ? 'Coming soon'
-            : formatPrice(promotionalPrice || price)}
-        </S.Price>
-        {price !== 482.49 && <Button icon={<AddShoppingCart />} size="small" />}
+        {price !== 482.49 && price !== 0 && (
+          <>
+            <S.Price>{formatPrice(promotionalPrice || price)}</S.Price>
+
+            <Button icon={<AddShoppingCart />} size="small" />
+          </>
+        )}
+        {price === 0 && (
+          <Button icon={<AddShoppingCart />} size="small">
+            Add to cart
+          </Button>
+        )}
       </S.BuyBox>
     </S.Content>
   </S.Wrapper>
