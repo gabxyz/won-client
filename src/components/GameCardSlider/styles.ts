@@ -15,12 +15,12 @@ export const Wrapper = styled.section<WrapperProps>`
       display: flex;
     }
     .slick-slide > div {
-      margin: 0 ${theme.spacings.xxsmall};
+      margin: 0 ${theme.spacings.xsmall};
       flex: 1 0 auto;
       height: 100%;
     }
     .slick-list {
-      margin: 0 -${theme.spacings.xxsmall};
+      margin: 0 -${theme.spacings.xsmall};
     }
     ${media.greaterThan('large')`
       .slick-slide > div {
