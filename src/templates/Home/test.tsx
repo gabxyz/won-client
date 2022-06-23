@@ -10,12 +10,16 @@ import Home, { HomeTemplateProps } from '.'
 
 const props: HomeTemplateProps = {
   banners: bannerMock,
-  newGames: [gamesMock[0]],
+  newGamesTitle: 'New Games',
+  newGames: gamesMock,
+  mostPopularGamesTitle: 'Most Popular Games',
+  mostPopularGames: gamesMock,
   mostPopularHighlight: highlightMock,
-  mostPopularGames: [gamesMock[0]],
-  upcomingGames: [gamesMock[0]],
+  upcomingGamesTitle: 'Upcoming Games',
+  upcomingGames: gamesMock,
   upcomingHighlight: highlightMock,
-  freeGames: [gamesMock[0]],
+  freeGamesTitle: 'Free Games',
+  freeGames: gamesMock,
   freeHighlight: highlightMock
 }
 
