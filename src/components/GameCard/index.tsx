@@ -36,52 +36,62 @@ const GameCard = ({
   ribbonColor = 'primary',
   ribbonSize = 'small',
   onFav
-}: GameCardProps) => (
-  <S.Wrapper>
-    {!!ribbon && (
-      <Ribbon size={ribbonSize} color={ribbonColor}>
-        {ribbon}
-      </Ribbon>
-    )}
-    <Link href={`game/${slug}`} passHref>
-      <S.ImageBox>
-        <img src={img} alt={title} />
-      </S.ImageBox>
-    </Link>
-    <S.Content>
+}: GameCardProps) => {
+  if (price === 0) {
+    ribbon = 'FREE'
+  }
+  if (price === 482.49) {
+    ribbon = 'Coming Soon'
+    ribbonColor = 'secondary'
+  }
+
+  return (
+    <S.Wrapper>
+      {!!ribbon && (
+        <Ribbon size={ribbonSize} color={ribbonColor}>
+          {ribbon}
+        </Ribbon>
+      )}
       <Link href={`game/${slug}`} passHref>
-        <S.Info>
-          <S.Title>{title}</S.Title>
-          <S.Developer>{developer}</S.Developer>
-        </S.Info>
+        <S.ImageBox>
+          <img src={img} alt={title} />
+        </S.ImageBox>
       </Link>
-      <S.FavButton onClick={onFav} role="button">
-        {favorite ? (
-          <Favorite aria-label="Remove from whishlist" />
-        ) : (
-          <FavoriteBorder aria-label="Add to wishlist" />
-        )}
-      </S.FavButton>
+      <S.Content>
+        <Link href={`game/${slug}`} passHref>
+          <S.Info>
+            <S.Title>{title}</S.Title>
+            <S.Developer>{developer}</S.Developer>
+          </S.Info>
+        </Link>
+        <S.FavButton onClick={onFav} role="button">
+          {favorite ? (
+            <Favorite aria-label="Remove from whishlist" />
+          ) : (
+            <FavoriteBorder aria-label="Add to wishlist" />
+          )}
+        </S.FavButton>
 
-      <S.BuyBox role="price">
-        {!!promotionalPrice && (
-          <S.Price isPromotional>{formatPrice(price)}</S.Price>
-        )}
-        {price !== 482.49 && price !== 0 && (
-          <>
-            <S.Price>{formatPrice(promotionalPrice || price)}</S.Price>
+        <S.BuyBox role="price">
+          {!!promotionalPrice && (
+            <S.Price isPromotional>{formatPrice(price)}</S.Price>
+          )}
+          {price !== 482.49 && price !== 0 && (
+            <>
+              <S.Price>{formatPrice(promotionalPrice || price)}</S.Price>
 
-            <Button icon={<AddShoppingCart />} size="small" />
-          </>
-        )}
-        {price === 0 && (
-          <Button icon={<AddShoppingCart />} size="small">
-            Add to cart
-          </Button>
-        )}
-      </S.BuyBox>
-    </S.Content>
-  </S.Wrapper>
-)
+              <Button icon={<AddShoppingCart />} size="small" />
+            </>
+          )}
+          {price === 0 && (
+            <Button icon={<AddShoppingCart />} size="small">
+              Add to cart
+            </Button>
+          )}
+        </S.BuyBox>
+      </S.Content>
+    </S.Wrapper>
+  )
+}
 
 export default GameCard
