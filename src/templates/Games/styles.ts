@@ -26,3 +26,26 @@ export const ShowMore = styled.div`
     }
   `}
 `
+
+export const GamesLoader = styled.div`
+  ${({ theme }) => css`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+    > svg {
+      width: 8rem;
+      height: 8rem;
+    }
+
+    ${media.greaterThan('medium')`
+      margin-top: ${theme.spacings.large};
+      
+      > svg {
+        width: 12rem;
+        height: 12rem;
+      }
+    `}
+  `}
+`
