@@ -27,6 +27,7 @@ export const gamesMapper = (games: QueryGames_games[] | null | undefined) => {
       slug: game.slug,
       developer: game.developers[0].name,
       img: `http://localhost:1337${game.cover?.url}`,
+      basePrice: game.basePrice,
       price: game.price
     }))
   )
