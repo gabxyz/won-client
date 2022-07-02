@@ -46,7 +46,8 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                   slug={game.slug}
                   developer={game.developers[0].name}
                   img={`http://localhost:1337${game.cover!.url}`}
-                  price={game.price}
+                  basePrice={game.basePrice!}
+                  price={game.price!}
                 />
               ))}
             </Grid>
