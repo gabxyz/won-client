@@ -10,6 +10,7 @@ export const GameFragment = gql`
     developers {
       name
     }
+    basePrice
     price
   }
 `
