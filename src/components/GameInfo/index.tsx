@@ -12,14 +12,15 @@ export type GameInfoProps = {
   title: string
   description: string
   price: number
+  basePrice?: number
 }
 
-const GameInfo = ({ title, description, price }: GameInfoProps) => {
+const GameInfo = ({ title, description, basePrice, price }: GameInfoProps) => {
   const handlePrice = (price: number) => {
     if (price === 0) {
       return 'FREE'
     }
-    if (price === 482.49) {
+    if (!price) {
       return 'Coming Soon'
     }
 
@@ -28,25 +29,27 @@ const GameInfo = ({ title, description, price }: GameInfoProps) => {
 
   return (
     <S.Wrapper>
-      <Heading color="black" lineBottom>
-        {title}
-      </Heading>
-
-      <Ribbon color="secondary">{handlePrice(price)}</Ribbon>
+      <S.HeadWrapper>
+        <Heading color="black" lineBottom>
+          {title}
+        </Heading>
+        <S.PriceWrapper>
+          {!!basePrice && (
+            <S.Promotional>{formatPrice(basePrice)}</S.Promotional>
+          )}
+          <Ribbon color="secondary">{handlePrice(price)}</Ribbon>
+        </S.PriceWrapper>
+      </S.HeadWrapper>
 
       <S.Description>{description}</S.Description>
 
       <S.ButtonsWrapper>
-        {price !== 482.49 && (
+        {!!price && (
           <Button icon={<AddShoppingCart />} size="large">
             Add to cart
           </Button>
         )}
-        <Button
-          icon={<FavoriteBorder />}
-          size="large"
-          minimal={price !== 482.49}
-        >
+        <Button icon={<FavoriteBorder />} size="large" minimal={!!price}>
           Wishlist
         </Button>
       </S.ButtonsWrapper>
