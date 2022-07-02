@@ -52,7 +52,8 @@ export interface QueryHome_newGames {
   slug: string;
   cover: QueryHome_newGames_cover | null;
   developers: QueryHome_newGames_developers[];
-  price: number;
+  basePrice: number | null;
+  price: number | null;
 }
 
 export interface QueryHome_upcomingGames_cover {
@@ -71,7 +72,8 @@ export interface QueryHome_upcomingGames {
   slug: string;
   cover: QueryHome_upcomingGames_cover | null;
   developers: QueryHome_upcomingGames_developers[];
-  price: number;
+  basePrice: number | null;
+  price: number | null;
 }
 
 export interface QueryHome_freeGames_cover {
@@ -90,7 +92,8 @@ export interface QueryHome_freeGames {
   slug: string;
   cover: QueryHome_freeGames_cover | null;
   developers: QueryHome_freeGames_developers[];
-  price: number;
+  basePrice: number | null;
+  price: number | null;
 }
 
 export interface QueryHome_sections_newGames_highlight_background {
@@ -157,7 +160,8 @@ export interface QueryHome_sections_popularGames_games {
   slug: string;
   cover: QueryHome_sections_popularGames_games_cover | null;
   developers: QueryHome_sections_popularGames_games_developers[];
-  price: number;
+  basePrice: number | null;
+  price: number | null;
 }
 
 export interface QueryHome_sections_popularGames {

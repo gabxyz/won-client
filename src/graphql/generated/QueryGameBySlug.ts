@@ -45,7 +45,8 @@ export interface QueryGameBySlug_games {
   name: string;
   short_description: string;
   description: string;
-  price: number;
+  basePrice: number | null;
+  price: number | null;
   rating: ENUM_GAME_RATING | null;
   release_date: any | null;
   gallery: QueryGameBySlug_games_gallery[];
