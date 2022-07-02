@@ -9,7 +9,7 @@ const props = {
   title: 'Population Zero',
   developer: 'Rockstar Games',
   img: 'https://source.unsplash.com/user/willianjusten/300x140',
-  price: 235
+  price: 200
 }
 
 describe('<GameCard />', () => {
@@ -42,7 +42,7 @@ describe('<GameCard />', () => {
   it('should render price in label', () => {
     renderWithTheme(<GameCard {...props} />)
 
-    const price = screen.getByText('$235.00')
+    const price = screen.getByText('$200.00')
 
     expect(price).not.toHaveStyle({
       textDecoration: 'line-through'
@@ -54,13 +54,13 @@ describe('<GameCard />', () => {
   })
 
   it('should render a line-through in price when promotional', () => {
-    renderWithTheme(<GameCard {...props} promotionalPrice={15} />)
+    renderWithTheme(<GameCard {...props} basePrice={235} />)
 
     expect(screen.getByText('$235.00')).toHaveStyle({
       textDecoration: 'line-through'
     })
 
-    expect(screen.getByText('$15.00')).not.toHaveStyle({
+    expect(screen.getByText('$200.00')).not.toHaveStyle({
       textDecoration: 'line-through'
     })
   })

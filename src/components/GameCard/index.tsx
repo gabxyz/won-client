@@ -16,7 +16,7 @@ export type GameCardProps = {
   developer: string
   img: string
   price: number
-  promotionalPrice?: number
+  basePrice?: number
   favorite?: boolean
   ribbon?: React.ReactNode
   ribbonColor?: RibbonColors
@@ -30,7 +30,7 @@ const GameCard = ({
   developer,
   img,
   price,
-  promotionalPrice,
+  basePrice,
   favorite = false,
   ribbon,
   ribbonColor = 'primary',
@@ -40,9 +40,13 @@ const GameCard = ({
   if (price === 0) {
     ribbon = 'FREE'
   }
-  if (price === 482.49) {
+  if (price === null) {
     ribbon = 'Coming Soon'
     ribbonColor = 'secondary'
+  }
+  if (basePrice) {
+    const discount = Math.floor(((basePrice - price) / basePrice) * 100)
+    ribbon = `${discount}% OFF`
   }
 
   return (
@@ -73,12 +77,12 @@ const GameCard = ({
         </S.FavButton>
 
         <S.BuyBox role="price">
-          {!!promotionalPrice && (
-            <S.Price isPromotional>{formatPrice(price)}</S.Price>
+          {!!basePrice && (
+            <S.Price isPromotional>{formatPrice(basePrice)}</S.Price>
           )}
-          {price !== 482.49 && price !== 0 && (
+          {!!price && (
             <>
-              <S.Price>{formatPrice(promotionalPrice || price)}</S.Price>
+              <S.Price>{formatPrice(price)}</S.Price>
 
               <Button icon={<AddShoppingCart />} size="small" />
             </>
