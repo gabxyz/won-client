@@ -55,7 +55,7 @@ describe('<ExploreSidebar />', () => {
     expect(screen.getByRole('radio', { name: /low to high/i })).toBeChecked()
   })
 
-  it('should filter with initial values', async () => {
+  it('should filter with initial values', () => {
     const onFilter = jest.fn()
 
     renderWithTheme(
@@ -69,13 +69,9 @@ describe('<ExploreSidebar />', () => {
       />
     )
 
-    userEvent.click(screen.getByRole('button', { name: /filter/i }))
-
-    await waitFor(() => {
-      expect(onFilter).toBeCalledWith({
-        platforms: ['windows'],
-        sort_by: 'low-to-high'
-      })
+    expect(onFilter).toBeCalledWith({
+      platforms: ['windows'],
+      sort_by: 'low-to-high'
     })
   })
 
@@ -88,13 +84,13 @@ describe('<ExploreSidebar />', () => {
     userEvent.click(screen.getByLabelText(/linux/i))
     userEvent.click(screen.getByLabelText(/low to high/i))
 
-    userEvent.click(screen.getByRole('button', { name: /filter/i }))
-
     await waitFor(() => {
-      expect(onFilter).toBeCalledWith({
-        platforms: ['windows', 'linux'],
-        sort_by: 'low-to-high'
-      })
+      expect(onFilter).toHaveBeenCalledTimes(4)
+    })
+
+    expect(onFilter).toBeCalledWith({
+      platforms: ['windows', 'linux'],
+      sort_by: 'low-to-high'
     })
   })
 
@@ -105,8 +101,6 @@ describe('<ExploreSidebar />', () => {
 
     userEvent.click(screen.getByLabelText(/low to high/i))
     userEvent.click(screen.getByLabelText(/high to low/i))
-
-    userEvent.click(screen.getByRole('button', { name: /filter/i }))
 
     await waitFor(() => {
       expect(onFilter).toBeCalledWith({ sort_by: 'high-to-low' })
@@ -136,6 +130,14 @@ describe('<ExploreSidebar />', () => {
     })
 
     userEvent.click(screen.getByLabelText(/close filters/))
+
+    await waitFor(() => {
+      expect(Element).not.toHaveStyleRule('opacity', '1', variant)
+    })
+
+    userEvent.click(screen.getByLabelText(/open filters/))
+
+    await userEvent.click(screen.getByRole('button', { name: /filter/i }))
 
     await waitFor(() => {
       expect(Element).not.toHaveStyleRule('opacity', '1', variant)
