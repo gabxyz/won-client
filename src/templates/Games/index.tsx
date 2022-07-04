@@ -12,6 +12,7 @@ import { Grid } from 'components/Grid'
 import GamesLoader from 'components/GamesLoader'
 
 import * as S from './styles'
+import Empty from 'components/Empty'
 
 export type GamesTemplateProps = {
   filterItems: ItemProps[]
@@ -57,24 +58,34 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           </S.GamesLoader>
         ) : (
           <section>
-            <Grid>
-              {data?.games.map((game) => (
-                <GameCard
-                  key={game.slug}
-                  title={game.name}
-                  slug={game.slug}
-                  developer={game.developers[0].name}
-                  img={`http://localhost:1337${game.cover!.url}`}
-                  basePrice={game.basePrice!}
-                  price={game.price!}
-                />
-              ))}
-            </Grid>
+            {data?.games.length ? (
+              <>
+                <Grid>
+                  {data?.games.map((game) => (
+                    <GameCard
+                      key={game.slug}
+                      title={game.name}
+                      slug={game.slug}
+                      developer={game.developers[0].name}
+                      img={`http://localhost:1337${game.cover!.url}`}
+                      basePrice={game.basePrice!}
+                      price={game.price!}
+                    />
+                  ))}
+                </Grid>
 
-            <S.ShowMore role="button" onClick={handleShowMore}>
-              <p>Show More</p>
-              <ArrowDown size={35} />
-            </S.ShowMore>
+                <S.ShowMore role="button" onClick={handleShowMore}>
+                  <p>Show More</p>
+                  <ArrowDown size={35} />
+                </S.ShowMore>
+              </>
+            ) : (
+              <Empty
+                title=":("
+                description="We didn't find any games matching this filter"
+                hasLink
+              />
+            )}
           </section>
         )}
       </S.Main>

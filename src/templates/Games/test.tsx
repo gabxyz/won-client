@@ -61,6 +61,18 @@ describe('<Games />', () => {
     ).toBeInTheDocument()
   })
 
+  it('should render empty when no games were found', async () => {
+    renderWithTheme(
+      <MockedProvider mocks={[]}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
+    )
+
+    expect(
+      await screen.findByText(/We didn't find any games matching this filter/i)
+    ).toBeInTheDocument()
+  })
+
   it('should render more games when show more is clicked', async () => {
     renderWithTheme(
       <MockedProvider mocks={[gamesMock, fetchMoreMock]} cache={apolloCache}>
