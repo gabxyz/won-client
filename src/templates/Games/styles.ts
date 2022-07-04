@@ -43,8 +43,8 @@ export const GamesLoader = styled.div`
       margin-top: ${theme.spacings.large};
       
       > svg {
-        width: 12rem;
-        height: 12rem;
+        width: 10rem;
+        height: 10rem;
       }
     `}
   `}

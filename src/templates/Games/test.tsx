@@ -34,23 +34,12 @@ jest.mock('next/link', () => ({
 }))
 
 describe('<Games />', () => {
-  it('should render loading when starting the template', () => {
-    renderWithTheme(
-      <MockedProvider mocks={[]}>
-        <Games filterItems={filterItemsMock} />
-      </MockedProvider>
-    )
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument()
-  })
-
   it('should render the sections', async () => {
     renderWithTheme(
       <MockedProvider mocks={[gamesMock]}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
     )
-
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument()
 
     expect(await screen.findByText(/price/i)).toBeInTheDocument()
 
