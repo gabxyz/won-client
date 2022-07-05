@@ -2,7 +2,7 @@ import { MockedProvider } from '@apollo/client/testing'
 import { screen, waitFor } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
 import filterItemsMock from 'components/ExploreSidebar/mock'
-import { fetchMoreMock, gamesMock } from './mocks'
+import { fetchMoreMock, gamesMock, noGamesMock } from './mocks'
 
 import Games from '.'
 import userEvent from '@testing-library/user-event'
@@ -52,7 +52,7 @@ describe('<Games />', () => {
 
   it('should render empty when no games were found', async () => {
     renderWithTheme(
-      <MockedProvider mocks={[]}>
+      <MockedProvider mocks={[noGamesMock]}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
     )

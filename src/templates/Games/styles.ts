@@ -11,23 +11,14 @@ export const Main = styled(Container)`
     `}
   `}
 `
-
 export const ShowMore = styled.div`
-  ${({ theme }) => css`
-    color: ${theme.colors.white};
-    text-align: center;
-    padding: ${theme.spacings.medium};
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
-
-    > svg {
-      color: ${theme.colors.primary};
-    }
-  `}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
 `
 
-export const GamesLoader = styled.div`
+export const Loader = styled.div`
   ${({ theme }) => css`
     width: 100%;
     height: 100%;
@@ -47,5 +38,20 @@ export const GamesLoader = styled.div`
         height: 10rem;
       }
     `}
+  `}
+`
+
+export const ShowMoreButton = styled.div`
+  ${({ theme }) => css`
+    color: ${theme.colors.white};
+    text-align: center;
+    padding: ${theme.spacings.medium};
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+
+    > svg {
+      color: ${theme.colors.primary};
+    }
   `}
 `
