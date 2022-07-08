@@ -15,15 +15,15 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 
   const filterPrice = {
     title: 'Price',
-    name: 'price_lte',
+    name: 'price',
     type: 'radio',
     fields: [
-      { label: 'Free', name: 0 },
-      { label: 'Under $50', name: 50 },
-      { label: 'Under $100', name: 100 },
-      { label: 'Under $150', name: 150 },
-      { label: 'Under $250', name: 250 },
-      { label: 'Under $500', name: 500 }
+      { label: 'Free', name: '0' },
+      { label: 'Under $5', name: 'u5' },
+      { label: 'Under $10', name: 'u10' },
+      { label: 'Under $15', name: 'u15' },
+      { label: 'Under $25', name: 'u25' },
+      { label: '$25 +', name: 'a25' }
     ]
   }
 
