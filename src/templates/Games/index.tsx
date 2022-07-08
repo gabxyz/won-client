@@ -30,7 +30,12 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
     }
   })
 
-  if (!data) return <GamesLoader />
+  if (!data)
+    return (
+      <S.Loader>
+        <GamesLoader />
+      </S.Loader>
+    )
 
   const { games, gamesConnection } = data
 
