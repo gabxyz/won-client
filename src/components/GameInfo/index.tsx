@@ -20,7 +20,7 @@ const GameInfo = ({ title, description, basePrice, price }: GameInfoProps) => {
     if (price === 0) {
       return 'FREE'
     }
-    if (!price) {
+    if (price === null) {
       return 'Coming Soon'
     }
 
@@ -44,12 +44,12 @@ const GameInfo = ({ title, description, basePrice, price }: GameInfoProps) => {
       <S.Description>{description}</S.Description>
 
       <S.ButtonsWrapper>
-        {!!price && (
+        {price !== null && (
           <Button icon={<AddShoppingCart />} size="large">
             Add to cart
           </Button>
         )}
-        <Button icon={<FavoriteBorder />} size="large" minimal={!!price}>
+        <Button icon={<FavoriteBorder />} size="large" minimal={price !== null}>
           Wishlist
         </Button>
       </S.ButtonsWrapper>
