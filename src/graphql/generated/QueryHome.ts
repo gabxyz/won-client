@@ -55,7 +55,6 @@ export interface QueryHome_newGames {
   developers: QueryHome_newGames_developers[];
   basePrice: number | null;
   price: number | null;
-  release_date: any | null;
 }
 
 export interface QueryHome_upcomingGames_cover {
@@ -77,7 +76,6 @@ export interface QueryHome_upcomingGames {
   developers: QueryHome_upcomingGames_developers[];
   basePrice: number | null;
   price: number | null;
-  release_date: any | null;
 }
 
 export interface QueryHome_freeGames_cover {
@@ -99,7 +97,6 @@ export interface QueryHome_freeGames {
   developers: QueryHome_freeGames_developers[];
   basePrice: number | null;
   price: number | null;
-  release_date: any | null;
 }
 
 export interface QueryHome_sections_newGames_highlight_background {
@@ -169,7 +166,6 @@ export interface QueryHome_sections_popularGames_games {
   developers: QueryHome_sections_popularGames_games_developers[];
   basePrice: number | null;
   price: number | null;
-  release_date: any | null;
 }
 
 export interface QueryHome_sections_popularGames {

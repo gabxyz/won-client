@@ -13,6 +13,5 @@ export const GameFragment = gql`
     }
     basePrice
     price
-    release_date
   }
 `
