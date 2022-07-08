@@ -26,4 +26,5 @@ export interface GameFragment {
   developers: GameFragment_developers[];
   basePrice: number | null;
   price: number | null;
+  release_date: any | null;
 }

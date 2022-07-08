@@ -26,6 +26,7 @@ export interface QueryGames_games {
   developers: QueryGames_games_developers[];
   basePrice: number | null;
   price: number | null;
+  release_date: any | null;
 }
 
 export interface QueryGames_gamesConnection_values {
