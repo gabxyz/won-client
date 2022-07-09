@@ -10,7 +10,7 @@ type ParseArgs = {
 const parsePrice = (price: string, obj: any) => {
   if (price[0] === '0' || price[0] === 'u') {
     obj['price_lte'] =
-      price.length < 1 ? Number(price[0]) : Number(price.slice(1))
+      price.length === 1 ? Number(price[0]) : Number(price.slice(1))
   }
 
   if (price[0] === 'a') {
@@ -25,17 +25,20 @@ export const parseQueryStringToWhere = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const obj: any = {}
 
+  Object.keys(queryString).forEach((key) => {
+    if (key === 'sort' || key === 'price') {
+      obj['price_null'] = false
+    }
+  })
+
   Object.keys(queryString)
     .filter((item) => item !== 'sort')
     .forEach((key) => {
       const item = filterItems?.find((item) => item.name === key)
-      const isCheckbox = item?.type === 'checkbox'
 
       item?.name === 'price'
         ? parsePrice(queryString[key]!.toString(), obj)
-        : (obj[key] = !isCheckbox
-            ? queryString[key]
-            : { name_contains: queryString[key] })
+        : (obj[key] = { name_contains: queryString[key] })
     })
 
   return obj

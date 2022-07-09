@@ -15,6 +15,8 @@ const queryString = {
 }
 const queryStringGTE = { ...queryString, price: 'a25' }
 
+const queryStringFREE = { ...queryString, price: '0' }
+
 describe('parseQueryStringToWhere()', () => {
   it('should parse queryString to where format with lte price', () => {
     const parsedQuery = parseQueryStringToWhere({
@@ -24,6 +26,7 @@ describe('parseQueryStringToWhere()', () => {
 
     expect(parsedQuery).toStrictEqual({
       price_lte: 25,
+      price_null: false,
       platforms: { name_contains: ['windows', 'linux'] },
       developers: { name_contains: 'Rockstar Games' }
     })
@@ -37,6 +40,21 @@ describe('parseQueryStringToWhere()', () => {
 
     expect(parsedQuery).toStrictEqual({
       price_gte: 25,
+      price_null: false,
+      platforms: { name_contains: ['windows', 'linux'] },
+      developers: { name_contains: 'Rockstar Games' }
+    })
+  })
+
+  it('should parse queryString to where format with price 0', () => {
+    const parsedQuery = parseQueryStringToWhere({
+      queryString: queryStringFREE,
+      filterItems
+    })
+
+    expect(parsedQuery).toStrictEqual({
+      price_lte: 0,
+      price_null: false,
       platforms: { name_contains: ['windows', 'linux'] },
       developers: { name_contains: 'Rockstar Games' }
     })
