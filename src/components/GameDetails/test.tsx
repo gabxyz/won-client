@@ -70,6 +70,12 @@ describe('<GameDetails />', () => {
     expect(screen.getByText('Nov 21, 2020')).toBeInTheDocument()
   })
 
+  it('should render coming soon when date is null', () => {
+    renderWithTheme(<GameDetails {...props} releaseDate={null!} />)
+
+    expect(screen.getByText(/coming soon/i)).toBeInTheDocument()
+  })
+
   it('should render a list of genres', () => {
     renderWithTheme(<GameDetails {...props} />)
 
