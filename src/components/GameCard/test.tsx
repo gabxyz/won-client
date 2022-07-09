@@ -95,4 +95,19 @@ describe('<GameCard />', () => {
     expect(ribbon).toHaveStyle({ height: '2.6rem', fontSize: '1.2rem' })
     expect(ribbon).toBeInTheDocument()
   })
+
+  it('should render a free ribbon when price is 0', () => {
+    renderWithTheme(<GameCard {...props} price={0} />)
+    const ribbon = screen.getByText(/free/i)
+
+    expect(ribbon).toBeInTheDocument()
+  })
+
+  it('should render a coming soon ribbon when price is null', () => {
+    renderWithTheme(<GameCard {...props} price={null!} />)
+    const ribbon = screen.getByText(/coming soon/i)
+
+    expect(ribbon).toHaveStyle({ backgroundColor: '#3CD3C1' })
+    expect(ribbon).toBeInTheDocument()
+  })
 })
