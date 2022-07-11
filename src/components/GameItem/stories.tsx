@@ -7,11 +7,19 @@ export default {
   args: {
     img: 'https://source.unsplash.com/user/willianjusten/151x70',
     title: 'Red Dead Redemption 2',
-    price: 'R$ 215,00'
+    price: 20
   }
 } as Meta
 
 export const Default: Story<GameItemProps> = (args) => <GameItem {...args} />
+
+export const WithDiscount: Story<GameItemProps> = (args) => (
+  <GameItem {...args} />
+)
+
+WithDiscount.args = {
+  basePrice: 25
+}
 
 export const WithPayment: Story<GameItemProps> = (args) => (
   <GameItem {...args} />

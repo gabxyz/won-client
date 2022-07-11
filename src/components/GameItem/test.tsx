@@ -6,7 +6,7 @@ import GameItem from '.'
 const props = {
   img: 'https://source.unsplash.com/user/willianjusten/151x70',
   title: 'Red Dead Redemption 2',
-  price: 'R$ 215,00'
+  price: 60
 }
 
 describe('<GameItem />', () => {
@@ -22,7 +22,28 @@ describe('<GameItem />', () => {
       props.img
     )
 
-    expect(screen.getByText('R$ 215,00')).toBeInTheDocument()
+    expect(screen.getByText('$60.00')).toBeInTheDocument()
+  })
+
+  it('should render the item with discount', () => {
+    renderWithTheme(<GameItem {...props} basePrice={85} />)
+
+    expect(
+      screen.getByRole('heading', { name: props.title })
+    ).toBeInTheDocument()
+
+    expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
+      'src',
+      props.img
+    )
+
+    expect(screen.getByText('$85.00')).toHaveStyle({
+      textDecoration: 'line-through'
+    })
+
+    expect(screen.getByText('$60.00')).not.toHaveStyle({
+      textDecoration: 'line-through'
+    })
   })
 
   it('should render the item with download link', () => {

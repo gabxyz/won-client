@@ -58,17 +58,6 @@ export const Title = styled.h3`
   `}
 `
 
-export const Price = styled.p`
-  ${({ theme }) => css`
-    color: ${theme.colors.white};
-    padding: 0.2rem ${theme.spacings.xxsmall};
-    background-color: ${theme.colors.secondary};
-    border-radius: ${theme.border.radius};
-    font-size: ${theme.font.sizes.small};
-    font-weight: ${theme.font.bold};
-  `}
-`
-
 export const DownloadLink = styled.a`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
