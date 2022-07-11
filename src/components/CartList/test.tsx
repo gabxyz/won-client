@@ -5,19 +5,24 @@ import CartList from '.'
 import mockItems from './mock'
 
 describe('<CartList />', () => {
-  it('should render the cart list', () => {
-    const { container } = renderWithTheme(
-      <CartList items={mockItems} total="R$ 330,00" />
-    )
+  it('should render the cart list with total from the sum of the game prices', () => {
+    const { container } = renderWithTheme(<CartList items={mockItems} />)
 
     expect(screen.getAllByRole('heading')).toHaveLength(2)
-    expect(screen.getByText('R$ 330,00')).toHaveStyle({ color: '#F231A5' })
+    expect(screen.getByText('$65.00')).toBeInTheDocument()
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
+  it('should render the cart list with total passed', () => {
+    renderWithTheme(<CartList items={mockItems} total={85} />)
+
+    expect(screen.getAllByRole('heading')).toHaveLength(2)
+    expect(screen.getByText('$85.00')).toBeInTheDocument()
+  })
+
   it('should render the button', () => {
-    renderWithTheme(<CartList items={mockItems} total="R$ 330,00" hasButton />)
+    renderWithTheme(<CartList items={mockItems} hasButton />)
     expect(screen.getByText(/buy it now/i)).toBeInTheDocument()
   })
 

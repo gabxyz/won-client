@@ -1,6 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CartList /> should render the cart list 1`] = `
+exports[
+  `<CartList /> should render the cart list with total from the sum of the game prices 1`
+] = `
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin-top: 0.8rem;
+}
+
+.c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  height: 3rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #FAFAFA;
+  padding: 0 0.8rem;
+  background-color: #3CD3C1;
+  border-radius: 0.4rem;
+  margin-right: calc(0.8rem / 2);
+}
+
 .c1 {
   padding: 2.4rem;
   border-bottom: 0.1rem solid #EAEAEA;
@@ -50,15 +86,6 @@ exports[`<CartList /> should render the cart list 1`] = `
   margin-bottom: 0.8rem;
 }
 
-.c6 {
-  color: #FAFAFA;
-  padding: 0.2rem 0.8rem;
-  background-color: #3CD3C1;
-  border-radius: 0.4rem;
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
 .c0 {
   background: #FAFAFA;
   display: -webkit-box;
@@ -73,7 +100,7 @@ exports[`<CartList /> should render the cart list 1`] = `
   align-self: start;
 }
 
-.c7 {
+.c8 {
   background: #eee;
   color: #030517;
   font-weight: 600;
@@ -93,7 +120,7 @@ exports[`<CartList /> should render the cart list 1`] = `
   justify-content: space-between;
 }
 
-.c8 {
+.c9 {
   color: #F231A5;
 }
 
@@ -122,7 +149,7 @@ exports[`<CartList /> should render the cart list 1`] = `
 }
 
 @media (min-width:768px) {
-  .c7 {
+  .c8 {
     font-size: 1.6rem;
     padding: 2.4rem;
   }
@@ -131,7 +158,6 @@ exports[`<CartList /> should render the cart list 1`] = `
 <div
   class="c0"
 >
-   
   <div
     class="c1"
   >
@@ -154,11 +180,16 @@ exports[`<CartList /> should render the cart list 1`] = `
         >
           Red Dead Redemption 2
         </h3>
-        <p
+        <div
           class="c6"
+          role="price"
         >
-          R$ 215,00
-        </p>
+          <div
+            class="c7"
+          >
+            $25.00
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -184,24 +215,29 @@ exports[`<CartList /> should render the cart list 1`] = `
         >
           Borderlands 3
         </h3>
-        <p
+        <div
           class="c6"
+          role="price"
         >
-          R$ 215,00
-        </p>
+          <div
+            class="c7"
+          >
+            $40.00
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div
-    class="c7"
+    class="c8"
   >
     <span>
       Total:
     </span>
     <span
-      class="c8"
+      class="c9"
     >
-      R$ 330,00
+      $65.00
     </span>
   </div>
 </div>
