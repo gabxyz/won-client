@@ -15,46 +15,31 @@ export type GameInfoProps = {
   basePrice?: number
 }
 
-const GameInfo = ({ title, description, basePrice, price }: GameInfoProps) => {
-  const handlePrice = (price: number) => {
-    if (price === 0) {
-      return 'FREE'
-    }
-    if (price === null) {
-      return 'Coming Soon'
-    }
+const GameInfo = ({ title, description, basePrice, price }: GameInfoProps) => (
+  <S.Wrapper>
+    <S.HeadWrapper>
+      <Heading color="black" lineBottom>
+        {title}
+      </Heading>
+      <S.PriceWrapper>
+        {!!basePrice && <S.Promotional>{formatPrice(basePrice)}</S.Promotional>}
+        <Ribbon color="secondary">{formatPrice(price)}</Ribbon>
+      </S.PriceWrapper>
+    </S.HeadWrapper>
 
-    return formatPrice(price)
-  }
+    <S.Description>{description}</S.Description>
 
-  return (
-    <S.Wrapper>
-      <S.HeadWrapper>
-        <Heading color="black" lineBottom>
-          {title}
-        </Heading>
-        <S.PriceWrapper>
-          {!!basePrice && (
-            <S.Promotional>{formatPrice(basePrice)}</S.Promotional>
-          )}
-          <Ribbon color="secondary">{handlePrice(price)}</Ribbon>
-        </S.PriceWrapper>
-      </S.HeadWrapper>
-
-      <S.Description>{description}</S.Description>
-
-      <S.ButtonsWrapper>
-        {price !== null && (
-          <Button icon={<AddShoppingCart />} size="large">
-            Add to cart
-          </Button>
-        )}
-        <Button icon={<FavoriteBorder />} size="large" minimal={price !== null}>
-          Wishlist
+    <S.ButtonsWrapper>
+      {price !== null && (
+        <Button icon={<AddShoppingCart />} size="large">
+          Add to cart
         </Button>
-      </S.ButtonsWrapper>
-    </S.Wrapper>
-  )
-}
+      )}
+      <Button icon={<FavoriteBorder />} size="large" minimal={price !== null}>
+        Wishlist
+      </Button>
+    </S.ButtonsWrapper>
+  </S.Wrapper>
+)
 
 export default GameInfo
