@@ -47,12 +47,14 @@ export const cartItems = [
   {
     id: '1',
     img: 'http://localhost:1337/sample-game.jpg',
+    basePrice: null,
     price: '$10.50',
     title: 'Sample Game'
   },
   {
     id: '2',
     img: 'http://localhost:1337/sample-game.jpg',
+    basePrice: '$15.00',
     price: '$10.50',
     title: 'Sample Game'
   }
