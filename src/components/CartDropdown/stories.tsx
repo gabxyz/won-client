@@ -12,7 +12,8 @@ export default {
     }
   },
   args: {
-    items
+    items,
+    total: '$65.00'
   }
 } as Meta
 

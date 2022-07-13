@@ -1,8 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[
-  `<CartList /> should render the cart list with total from the sum of the game prices 1`
-] = `
+exports[`<CartList /> should render the cart list 1`] = `
 .c6 {
   display: -webkit-box;
   display: -webkit-flex;

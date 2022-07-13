@@ -2,22 +2,16 @@ import Button from 'components/Button'
 import Empty from 'components/Empty'
 import GameItem, { GameItemProps } from 'components/GameItem'
 import Link from 'next/link'
-import formatPrice from 'utils/format-price'
 
 import * as S from './styles'
 
 export type CartListProps = {
   items?: GameItemProps[]
-  total?: number
+  total?: string
   hasButton?: boolean
 }
 
 const CartList = ({ items = [], total, hasButton = false }: CartListProps) => {
-  if (!total) {
-    total = items
-      .map((item) => item.price)
-      .reduce((prev, curr) => prev + curr, 0)
-  }
   return (
     <S.Wrapper isEmpty={!items.length}>
       {items.length ? (
@@ -27,7 +21,7 @@ const CartList = ({ items = [], total, hasButton = false }: CartListProps) => {
           ))}
           <S.Footer>
             {!hasButton && <span>Total:</span>}
-            <S.Total>{formatPrice(total)}</S.Total>
+            <S.Total>{total}</S.Total>
 
             {hasButton && (
               <Link href="/cart">

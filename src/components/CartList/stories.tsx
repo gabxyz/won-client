@@ -7,7 +7,8 @@ export default {
   title: 'CartList',
   component: CartList,
   args: {
-    items: mockItems
+    items: mockItems,
+    total: '$65.00'
   },
   argTypes: {
     items: {
