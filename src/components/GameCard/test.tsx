@@ -1,7 +1,6 @@
-import { fireEvent, screen } from '@testing-library/react'
-import theme from 'styles/theme'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { render, screen, fireEvent } from 'utils/test-utils'
 
+import theme from 'styles/theme'
 import GameCard from '.'
 
 const props = {
@@ -14,7 +13,7 @@ const props = {
 
 describe('<GameCard />', () => {
   it('should render correctly', () => {
-    const { container } = renderWithTheme(<GameCard {...props} />)
+    const { container } = render(<GameCard {...props} />)
 
     expect(
       screen.getByRole('heading', { name: props.title })
@@ -40,7 +39,7 @@ describe('<GameCard />', () => {
   })
 
   it('should render price in label', () => {
-    renderWithTheme(<GameCard {...props} />)
+    render(<GameCard {...props} />)
 
     const price = screen.getByText('$200.00')
 
@@ -54,7 +53,7 @@ describe('<GameCard />', () => {
   })
 
   it('should render a line-through in price when promotional', () => {
-    renderWithTheme(<GameCard {...props} basePrice={235} />)
+    render(<GameCard {...props} basePrice={235} />)
 
     expect(screen.getByText('$235.00')).toHaveStyle({
       textDecoration: 'line-through'
@@ -66,14 +65,14 @@ describe('<GameCard />', () => {
   })
 
   it('should render a filled favorite icon when favorite is true', () => {
-    renderWithTheme(<GameCard {...props} favorite />)
+    render(<GameCard {...props} favorite />)
 
     expect(screen.getByLabelText(/remove from whishlist/i)).toBeInTheDocument()
   })
 
   it('should call onFav method when favorite is clicked', () => {
     const onFav = jest.fn()
-    renderWithTheme(<GameCard {...props} favorite onFav={onFav} />)
+    render(<GameCard {...props} favorite onFav={onFav} />)
 
     fireEvent.click(screen.getAllByRole('button')[0])
 
@@ -81,7 +80,7 @@ describe('<GameCard />', () => {
   })
 
   it('should render a ribbon', () => {
-    renderWithTheme(
+    render(
       <GameCard
         {...props}
         ribbon="My Ribbon"
@@ -97,14 +96,14 @@ describe('<GameCard />', () => {
   })
 
   it('should render a free ribbon when price is 0', () => {
-    renderWithTheme(<GameCard {...props} price={0} />)
+    render(<GameCard {...props} price={0} />)
     const ribbon = screen.getByText(/free/i)
 
     expect(ribbon).toBeInTheDocument()
   })
 
   it('should render a coming soon ribbon when price is null', () => {
-    renderWithTheme(<GameCard {...props} price={null!} />)
+    render(<GameCard {...props} price={null!} />)
     const ribbon = screen.getByText(/coming soon/i)
 
     expect(ribbon).toHaveStyle({ backgroundColor: '#3CD3C1' })
