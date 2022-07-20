@@ -1,129 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<GameInfo /> should render game infos 1`] = `
-.c5 {
-  position: absolute;
-  top: 1.6rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-weight: 600;
-  color: #FAFAFA;
-  background-color: #3CD3C1;
-  height: 3.6rem;
-  padding: 0 2.4rem;
-  font-size: 1.4rem;
-  right: -2rem;
-}
-
-.c5::before {
-  content: '';
-  position: absolute;
-  right: 0;
-  border-style: solid;
-  border-left-width: 0rem;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  border-bottom-width: 1rem;
-}
-
-.c5::before {
-  border-left-color: #1f8a7d;
-  border-top-color: #1f8a7d;
-}
-
-.c5::before {
-  top: 3.6rem;
-  border-top-width: 1rem;
-  border-right-width: 2rem;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  position: relative;
-  background: #FAFAFA;
-  padding: 1.6rem;
-}
-
-.c0 .c4 {
-  right: -1rem;
-  top: 2rem;
-  font-size: 1.6rem;
-}
-
-.c0 .c4:before {
-  border-right-width: 1rem;
-}
-
-.c6 {
-  font-size: 1.4rem;
-  color: #8F8F8F;
-  margin-bottom: 2.4rem;
-  margin-top: 1.6rem;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c7 > button {
-  width: 100%;
-  margin-bottom: 0.8rem;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c3 {
-  width: 30vw;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 1.6rem;
-  margin-right: -0.8rem;
-}
-
 .c2 {
   color: #030517;
   position: relative;
@@ -222,10 +99,139 @@ exports[`<GameInfo /> should render game infos 1`] = `
   color: #e20e8d;
 }
 
+.c5 {
+  position: absolute;
+  top: 1.6rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  color: #FAFAFA;
+  background-color: #3CD3C1;
+  height: 3.6rem;
+  padding: 0 2.4rem;
+  font-size: 1.4rem;
+  right: -2rem;
+}
+
+.c5::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  border-style: solid;
+  border-left-width: 0rem;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-bottom-width: 1rem;
+}
+
+.c5::before {
+  border-left-color: #1f8a7d;
+  border-top-color: #1f8a7d;
+}
+
+.c5::before {
+  top: 3.6rem;
+  border-top-width: 1rem;
+  border-right-width: 2rem;
+}
+
 .c9 {
   display: inline-block;
   vertical-align: middle;
   overflow: hidden;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  background: #FAFAFA;
+  padding: 1.6rem;
+}
+
+.c0 .c4 {
+  right: -1rem;
+  top: 2rem;
+  font-size: 1.6rem;
+}
+
+.c0 .c4:before {
+  border-right-width: 1rem;
+}
+
+.c6 {
+  font-size: 1.4rem;
+  color: #8F8F8F;
+  margin-bottom: 2.4rem;
+  margin-top: 1.6rem;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c7 > button {
+  width: 100%;
+  margin-bottom: 0.8rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c3 {
+  width: 30vw;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 1.6rem;
+  margin-right: -0.8rem;
+}
+
+@media (min-width:768px) {
+  .c2 {
+    font-size: 2.8rem;
+  }
 }
 
 @media (min-width:768px) {
@@ -292,12 +298,6 @@ exports[`<GameInfo /> should render game infos 1`] = `
   }
 }
 
-@media (min-width:768px) {
-  .c2 {
-    font-size: 2.8rem;
-  }
-}
-
 <div
   class="c0"
 >
@@ -317,7 +317,7 @@ exports[`<GameInfo /> should render game infos 1`] = `
         class="c4 c5"
         color="secondary"
       >
-        $220.00
+        $45.00
       </div>
     </div>
   </div>
@@ -334,6 +334,7 @@ exports[`<GameInfo /> should render game infos 1`] = `
     >
       <svg
         aria-hidden="true"
+        aria-label="Add to cart"
         class="c9"
         fill="currentColor"
         focusable="false"

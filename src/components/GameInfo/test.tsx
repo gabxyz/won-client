@@ -3,9 +3,10 @@ import { render, screen } from 'utils/test-utils'
 import GameInfo from '.'
 
 const props = {
+  id: '1',
   title: 'Game Title',
   description: 'Game Description',
-  price: 220
+  price: 45
 }
 
 describe('<GameInfo />', () => {
@@ -16,19 +17,19 @@ describe('<GameInfo />', () => {
       screen.getByRole('heading', { name: /game title/i })
     ).toBeInTheDocument()
     expect(screen.getByText(/game description/i)).toBeInTheDocument()
-    expect(screen.getByText(/\$220\.00/i)).toBeInTheDocument()
+    expect(screen.getByText(/\$45\.00/i)).toBeInTheDocument()
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('should render basePrice with a line-through when passed', () => {
-    render(<GameInfo {...props} basePrice={250} />)
+    render(<GameInfo {...props} basePrice={60} />)
 
-    expect(screen.getByText('$250.00')).toHaveStyle({
+    expect(screen.getByText('$60.00')).toHaveStyle({
       textDecoration: 'line-through'
     })
 
-    expect(screen.getByText('$220.00')).not.toHaveStyle({
+    expect(screen.getByText('$45.00')).not.toHaveStyle({
       textDecoration: 'line-through'
     })
   })
