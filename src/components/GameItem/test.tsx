@@ -5,7 +5,7 @@ import GameItem from '.'
 const props = {
   img: 'https://source.unsplash.com/user/willianjusten/151x70',
   title: 'Red Dead Redemption 2',
-  price: 60
+  price: '$60.00'
 }
 
 describe('<GameItem />', () => {
@@ -25,7 +25,7 @@ describe('<GameItem />', () => {
   })
 
   it('should render the item with discount', () => {
-    render(<GameItem {...props} basePrice={85} />)
+    render(<GameItem {...props} basePrice="$85.00" />)
 
     expect(
       screen.getByRole('heading', { name: props.title })

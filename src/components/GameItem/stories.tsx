@@ -7,7 +7,7 @@ export default {
   args: {
     img: 'https://source.unsplash.com/user/willianjusten/151x70',
     title: 'Red Dead Redemption 2',
-    price: 20
+    price: '$20.00'
   }
 } as Meta
 
@@ -18,7 +18,7 @@ export const WithDiscount: Story<GameItemProps> = (args) => (
 )
 
 WithDiscount.args = {
-  basePrice: 25
+  basePrice: '$25.00'
 }
 
 export const WithPayment: Story<GameItemProps> = (args) => (

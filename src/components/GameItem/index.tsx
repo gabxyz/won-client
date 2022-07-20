@@ -1,8 +1,7 @@
 import { Download } from '@styled-icons/boxicons-solid/Download'
 
-import formatPrice from 'utils/format-price'
-
 import { BuyBox, Price } from 'components/GameCard/styles'
+
 import * as S from './styles'
 
 export type PaymentInfoProps = {
@@ -15,8 +14,8 @@ export type PaymentInfoProps = {
 export type GameItemProps = {
   img: string
   title: string
-  basePrice?: number
-  price: number
+  basePrice?: string | null
+  price: string
   downloadLink?: string
   paymentInfo?: PaymentInfoProps
 }
@@ -50,8 +49,8 @@ const GameItem = ({
         </S.Title>
 
         <BuyBox role="price">
-          {!!basePrice && <Price isPromotional>{formatPrice(basePrice)}</Price>}
-          <Price>{formatPrice(price)}</Price>
+          {!!basePrice && <Price isPromotional>{basePrice}</Price>}
+          <Price>{price}</Price>
         </BuyBox>
       </S.Content>
     </S.GameContent>
