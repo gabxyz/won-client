@@ -1,6 +1,6 @@
 import { Download } from '@styled-icons/boxicons-solid/Download'
 
-import { BuyBox, Price } from 'components/GameCard/styles'
+import { Price } from 'components/GameCard/styles'
 
 import * as S from './styles'
 
@@ -48,10 +48,10 @@ const GameItem = ({
           )}
         </S.Title>
 
-        <BuyBox role="price">
+        <S.PriceBox role="price">
           {!!basePrice && <Price isPromotional>{basePrice}</Price>}
           <Price>{price}</Price>
-        </BuyBox>
+        </S.PriceBox>
       </S.Content>
     </S.GameContent>
 

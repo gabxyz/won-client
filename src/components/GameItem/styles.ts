@@ -1,3 +1,4 @@
+import { BuyBox } from 'components/GameCard/styles'
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
@@ -34,6 +35,13 @@ export const ImageBox = styled.div`
       width: 15rem;
       height: 7rem;
     `}
+  `}
+`
+
+export const PriceBox = styled(BuyBox)`
+  ${({ theme }) => css`
+    flex-direction: row-reverse;
+    gap: ${theme.spacings.xxsmall};
   `}
 `
 
