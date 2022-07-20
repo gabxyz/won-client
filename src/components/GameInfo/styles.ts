@@ -92,11 +92,11 @@ export const PriceWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-bottom: ${theme.spacings.xsmall};
-    margin-right: -${theme.spacings.xxsmall};
+
     ${media.greaterThan('medium')`
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
     `}
   `}
 `
