@@ -1,16 +1,14 @@
 import Link from 'next/link'
-
-import Button from 'components/Button'
-import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
-import {
-  AddShoppingCart,
-  Favorite,
-  FavoriteBorder
-} from '@styled-icons/material-outlined'
-import * as S from './styles'
 import formatPrice from 'utils/format-price'
 
+import CartButton from 'components/CartButton'
+import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
+import { Favorite, FavoriteBorder } from '@styled-icons/material-outlined'
+
+import * as S from './styles'
+
 export type GameCardProps = {
+  id: string
   slug: string
   title: string
   developer: string
@@ -25,6 +23,7 @@ export type GameCardProps = {
 }
 
 const GameCard = ({
+  id,
   slug,
   title,
   developer,
@@ -84,14 +83,10 @@ const GameCard = ({
             <>
               <S.Price>{formatPrice(price)}</S.Price>
 
-              <Button icon={<AddShoppingCart />} size="small" />
+              <CartButton id={id} />
             </>
           )}
-          {price === 0 && (
-            <Button icon={<AddShoppingCart />} size="small">
-              Add to cart
-            </Button>
-          )}
+          {price === 0 && <CartButton id={id} hasText />}
         </S.BuyBox>
       </S.Content>
     </S.Wrapper>

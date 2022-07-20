@@ -1,4 +1,5 @@
 import { Story, Meta } from '@storybook/react/types-6-0'
+import { CartContextData } from 'hooks/use-cart'
 import GameCard, { GameCardProps } from '.'
 
 export default {
@@ -9,8 +10,7 @@ export default {
     title: 'Population Zero',
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x140',
-    price: 235,
-    promotionalPrice: 200
+    price: 45
   },
   argTypes: {
     onFav: { action: 'clicked' },
@@ -29,14 +29,51 @@ export const Default: Story<GameCardProps> = (args) => (
   </div>
 )
 
-export const WithRibbon: Story<GameCardProps> = (args) => (
+export const IsInCart: Story<GameCardProps & CartContextData> = (args) => (
+  <div style={{ width: '30rem' }}>
+    <GameCard {...args} />
+  </div>
+)
+IsInCart.args = {
+  isInCart: () => true
+}
+
+export const IsInCartFree: Story<GameCardProps & CartContextData> = (args) => (
+  <div style={{ width: '30rem' }}>
+    <GameCard {...args} />
+  </div>
+)
+IsInCartFree.args = {
+  price: 0,
+  isInCart: () => true
+}
+
+export const IsFree: Story<GameCardProps> = (args) => (
   <div style={{ width: '30rem' }}>
     <GameCard {...args} />
   </div>
 )
 
-WithRibbon.args = {
-  ribbon: '20% OFF',
-  ribbonSize: 'small',
-  ribbonColor: 'primary'
+IsFree.args = {
+  price: 0
+}
+
+export const IsPromotional: Story<GameCardProps> = (args) => (
+  <div style={{ width: '30rem' }}>
+    <GameCard {...args} />
+  </div>
+)
+
+IsPromotional.args = {
+  basePrice: 60
+}
+
+export const IsComingSoon: Story<GameCardProps> = (args) => (
+  <div style={{ width: '30rem' }}>
+    <GameCard {...args} />
+  </div>
+)
+
+IsComingSoon.args = {
+  price: null!
 }
