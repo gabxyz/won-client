@@ -4,11 +4,13 @@ import Link from 'next/link'
 import TextField from 'components/TextField'
 import Button from 'components/Button'
 
-import { FormWrapper, FormLink } from 'components/Form'
+import { FormWrapper, FormLink, FormLoading } from 'components/Form'
 import React, { useState } from 'react'
 import { UsersPermissionsRegisterInput } from 'graphql/generated/globalTypes'
 import { useMutation } from '@apollo/client'
 import { MUTATION_REGISTER } from 'graphql/mutations/register'
+import GamesLoader from 'components/GamesLoader'
+import { signIn } from 'next-auth/client'
 
 const FormSignUp = () => {
   const [values, setValues] = useState<UsersPermissionsRegisterInput>({
@@ -17,7 +19,17 @@ const FormSignUp = () => {
     password: ''
   })
 
-  const [createUser] = useMutation(MUTATION_REGISTER)
+  const [createUser, { loading, error }] = useMutation(MUTATION_REGISTER, {
+    onError: (err) => console.error(err),
+    onCompleted: () => {
+      !error &&
+        signIn('credentials', {
+          email: values.email,
+          password: values.password,
+          callbackUrl: '/'
+        })
+    }
+  })
 
   const handleInput = (field: string, value: string) => {
     setValues((s) => ({ ...s, [field]: value }))
@@ -68,8 +80,14 @@ const FormSignUp = () => {
           onInputChange={(v) => handleInput('confirm-password', v)}
           icon={<Lock />}
         />
-        <Button type="submit" size="large" fullWidth>
-          Sign up now
+        <Button type="submit" size="large" fullWidth disabled={loading}>
+          {loading ? (
+            <FormLoading>
+              <GamesLoader />
+            </FormLoading>
+          ) : (
+            <span>Sign up now</span>
+          )}
         </Button>
         <FormLink>
           Already have an account?{' '}
