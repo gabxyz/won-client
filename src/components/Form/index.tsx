@@ -15,6 +15,11 @@ export const FormWrapper = styled.div`
   `}
 `
 
+export const FormLoading = styled.div`
+  width: 5rem;
+  height: 5rem;
+`
+
 export const FormLink = styled.div`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
