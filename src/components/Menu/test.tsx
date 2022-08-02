@@ -38,7 +38,7 @@ describe('<Menu />', () => {
 
     expect(screen.queryByText(/my profile/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/wishlist/i)).not.toBeInTheDocument()
-    expect(screen.getByText(/log in now/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/sign in/i)).toHaveLength(2)
     expect(screen.getByText(/sign up/i)).toBeInTheDocument()
   })
 
@@ -47,7 +47,15 @@ describe('<Menu />', () => {
 
     expect(screen.getAllByText(/my profile/i)).toHaveLength(2)
     expect(screen.getAllByText(/wishlist/i)).toHaveLength(2)
-    expect(screen.queryByText(/log in now/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/sign in/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument()
+  })
+
+  it('should not show sign in or user dropdown if loading', () => {
+    render(<Menu username="gabriel" loading />)
+
+    expect(screen.queryByText(/my profile/i)).not.toBeInTheDocument()
+
+    expect(screen.queryByText(/sign in/i)).not.toBeInTheDocument()
   })
 })
