@@ -13,8 +13,8 @@ export type GameCardProps = {
   title: string
   developer: string
   img: string
-  price: number
-  basePrice?: number
+  price: number | null
+  basePrice?: number | null
   favorite?: boolean
   ribbon?: React.ReactNode
   ribbonColor?: RibbonColors
@@ -44,7 +44,7 @@ const GameCard = ({
     ribbonColor = 'secondary'
   }
   if (basePrice) {
-    const discount = Math.floor(((basePrice - price) / basePrice) * 100)
+    const discount = Math.floor(((basePrice - price!) / basePrice) * 100)
     ribbon = `${discount}% OFF`
   }
 
