@@ -11,6 +11,7 @@ import Head from 'next/head'
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
 import { useApollo } from 'utils/apollo'
+import { WishlistProvider } from 'hooks/use-wishlist'
 
 function App({ Component, pageProps }: AppProps) {
   const client = useApollo(pageProps.initialApolloState)
@@ -20,25 +21,27 @@ function App({ Component, pageProps }: AppProps) {
       <ApolloProvider client={client}>
         <ThemeProvider theme={theme}>
           <CartProvider>
-            <Head>
-              <title>Won Games</title>
-              <link rel="shortcut icon" href="/img/icon-512.png" />
-              <link rel="apple-touch-icon" href="/img/icon-512.png" />
-              <link rel="manifest" href="/manifest.json" />
-              <meta
-                name="description"
-                content="The coolest e-commerce for games that I know"
+            <WishlistProvider>
+              <Head>
+                <title>Won Games</title>
+                <link rel="shortcut icon" href="/img/icon-512.png" />
+                <link rel="apple-touch-icon" href="/img/icon-512.png" />
+                <link rel="manifest" href="/manifest.json" />
+                <meta
+                  name="description"
+                  content="The coolest e-commerce for games that I know"
+                />
+              </Head>
+              <GlobalStyles />
+              <NextNProgress
+                color="#F231A5"
+                startPosition={0.3}
+                stopDelayMs={200}
+                height={3}
+                showOnShallow={true}
               />
-            </Head>
-            <GlobalStyles />
-            <NextNProgress
-              color="#F231A5"
-              startPosition={0.3}
-              stopDelayMs={200}
-              height={3}
-              showOnShallow={true}
-            />
-            <Component {...pageProps} />
+              <Component {...pageProps} />
+            </WishlistProvider>
           </CartProvider>
         </ThemeProvider>
       </ApolloProvider>
