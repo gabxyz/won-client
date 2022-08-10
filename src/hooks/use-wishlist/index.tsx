@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useMutation } from '@apollo/client'
 import { GameCardProps } from 'components/GameCard'
 import { QueryWishlist_wishlists_games } from 'graphql/generated/QueryWishlist'
@@ -63,7 +62,7 @@ const WishlistProvider = ({ children }: WishlistProviderProps) => {
     }
   )
 
-  const { data, loading } = useQueryWishlist({
+  const { data, loading: loadingQuery } = useQueryWishlist({
     skip: !session?.user?.email,
     context: { session },
     variables: {
@@ -102,7 +101,14 @@ const WishlistProvider = ({ children }: WishlistProviderProps) => {
     })
   }
   const removeFromWishlist = (id: string) => {
-    id
+    updateList({
+      variables: {
+        input: {
+          where: { id: wishlistId },
+          data: { games: wishlistIds.filter((gameId: string) => gameId !== id) }
+        }
+      }
+    })
   }
 
   return (
@@ -112,7 +118,7 @@ const WishlistProvider = ({ children }: WishlistProviderProps) => {
         isInWishlist,
         addToWishlist,
         removeFromWishlist,
-        loading
+        loading: loadingQuery || loadingCreate || loadingUpdate
       }}
     >
       {children}
