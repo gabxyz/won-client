@@ -1,9 +1,9 @@
 import { render, screen } from 'utils/test-utils'
-import GamesLoader from '.'
+import Spinner from '.'
 
-describe('<Loader />', () => {
+describe('<Spinner />', () => {
   it('Should render correctly', () => {
-    render(<GamesLoader />)
+    render(<Spinner />)
 
     expect(screen.getByTitle(/loading/i)).toBeInTheDocument()
   })
