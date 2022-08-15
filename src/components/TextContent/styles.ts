@@ -6,6 +6,7 @@ import * as HeadingStyles from 'components/Heading/styles'
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.white};
+    border-radius: ${theme.border.radius};
 
     ${media.greaterThan('medium')`
       background: ${theme.colors.white};
