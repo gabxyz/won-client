@@ -9,10 +9,10 @@ import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/
 import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar'
 import GameCard from 'components/GameCard'
 import { Grid } from 'components/Grid'
-import GamesLoader from 'components/GamesLoader'
 
 import * as S from './styles'
 import Empty from 'components/Empty'
+import Spinner from 'components/Spinner'
 
 export type GamesTemplateProps = {
   filterItems: ItemProps[]
@@ -33,7 +33,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   if (!data)
     return (
       <S.Loader>
-        <GamesLoader />
+        <Spinner size={48} />
       </S.Loader>
     )
 
@@ -84,9 +84,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
               {hasMoreGames && (
                 <S.ShowMore>
                   {loading ? (
-                    <S.Loader>
-                      <GamesLoader />
-                    </S.Loader>
+                    <Spinner />
                   ) : (
                     <S.ShowMoreButton role="button" onClick={handleShowMore}>
                       <p>Show More</p>

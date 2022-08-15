@@ -19,26 +19,11 @@ export const ShowMore = styled.div`
 `
 
 export const Loader = styled.div`
-  ${({ theme }) => css`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-
-    > svg {
-      width: 8rem;
-      height: 8rem;
-    }
-
-    ${media.greaterThan('medium')`
-      margin-top: ${theme.spacings.large};
-      
-      > svg {
-        width: 10rem;
-        height: 10rem;
-      }
-    `}
-  `}
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export const ShowMoreButton = styled.div`

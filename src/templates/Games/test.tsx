@@ -1,3 +1,4 @@
+import 'session.mock'
 import { MockedProvider } from '@apollo/client/testing'
 import apolloCache from 'utils/apolloCache'
 
