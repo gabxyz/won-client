@@ -7,17 +7,12 @@ import {
   ErrorOutline
 } from '@styled-icons/material-outlined'
 
-import {
-  FormWrapper,
-  FormLoading,
-  FormError,
-  FormSuccess
-} from 'components/Form'
+import { FormWrapper, FormError, FormSuccess } from 'components/Form'
 import Button from 'components/Button'
 import TextField from 'components/TextField'
 
-import GamesLoader from 'components/GamesLoader'
 import { FieldErrors, forgotValidate } from 'utils/validations'
+import Spinner from 'components/Spinner'
 
 const FormForgotPassword = () => {
   const { query } = useRouter()
@@ -98,13 +93,7 @@ const FormForgotPassword = () => {
               icon={<Email />}
             />
             <Button type="submit" size="large" fullWidth disabled={loading}>
-              {loading ? (
-                <FormLoading>
-                  <GamesLoader />
-                </FormLoading>
-              ) : (
-                <span>Send email</span>
-              )}
+              {loading ? <Spinner size={28} /> : <span>Send email</span>}
             </Button>
           </form>
         </>
