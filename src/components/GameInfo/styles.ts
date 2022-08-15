@@ -10,11 +10,14 @@ export const Wrapper = styled.div`
     position: relative;
     background: ${theme.colors.white};
     padding: ${theme.spacings.xsmall};
+    border-radius: ${theme.border.radius};
 
     ${RibbonStyles.Wrapper} {
       right: -1rem;
       top: 2rem;
       font-size: ${theme.font.sizes.medium};
+      padding: 1.5rem;
+      border-radius: ${theme.border.radius} 0 0 ${theme.border.radius};
 
       &:before {
         border-right-width: 1rem;
@@ -27,8 +30,8 @@ export const Wrapper = styled.div`
       ${RibbonStyles.Wrapper} {
         position: relative;
         top: 0;
-        right: ${theme.spacings.xxsmall};
-        font-size: ${theme.font.sizes.large};
+        right: 0.1rem;
+        font-size: ${theme.font.sizes.medium};
         border-radius: ${theme.border.radius};
 
         &:before {
@@ -79,26 +82,25 @@ export const HeadWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
+  > h2 {
+    max-width: 60%;
+  }
+
   ${media.greaterThan('medium')`
-      align-items: center;
-    `}
+    > h2 {
+      max-width: 100%;
+    }
+  `}
 `
 
 export const PriceWrapper = styled.div`
-  ${({ theme }) => css`
-    width: 30vw;
+  margin-top: 1rem;
+  ${media.greaterThan('medium')`
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: ${theme.spacings.xsmall};
-
-    ${media.greaterThan('medium')`
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    `}
-  `}
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+`}
 `
 
 export const Promotional = styled.p`
@@ -107,9 +109,10 @@ export const Promotional = styled.p`
     text-decoration: line-through;
     font-size: ${theme.font.sizes.medium};
     font-weight: ${theme.font.bold};
+    margin-right: 7rem;
 
     ${media.greaterThan('medium')`
-    margin-right: ${theme.spacings.small};
+      margin: 0;
     `}
   `}
 `
