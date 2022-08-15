@@ -15,11 +15,6 @@ export const FormWrapper = styled.div`
   `}
 `
 
-export const FormLoading = styled.div`
-  width: 5rem;
-  height: 5rem;
-`
-
 export const FormError = styled.div`
   ${({ theme }) => css`
     text-align: center;
