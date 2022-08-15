@@ -22,6 +22,7 @@ export const Content = styled.div`
     position: absolute;
     right: 0;
     z-index: ${theme.layers.alwaysOnTop};
+    border-radius: ${theme.border.radius};
 
     &::before {
       content: '';
