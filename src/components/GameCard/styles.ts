@@ -5,9 +5,11 @@ export const Wrapper = styled.article`
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     width: 100%;
     height: 100%;
     background-color: ${theme.colors.white};
+    border-radius: ${theme.border.radius};
   `}
 `
 
@@ -61,7 +63,7 @@ export const Info = styled.a`
 export const Title = styled.h3`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.medium};
-    line-height: ${theme.font.sizes.medium};
+    line-height: ${theme.font.sizes.small};
     font-weight: ${theme.font.bold};
     color: ${theme.colors.black};
   `}
@@ -72,6 +74,10 @@ export const Developer = styled.h4`
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.bold};
     color: ${theme.colors.gray};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 2rem;
   `}
 `
 
@@ -79,9 +85,8 @@ export const FavButton = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
     position: absolute;
-    right: 0;
+    right: -1rem;
     top: -0.5rem;
-    cursor: pointer;
 
     svg {
       width: 2.5rem;
