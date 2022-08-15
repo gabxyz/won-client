@@ -2,14 +2,14 @@ import { useRouter } from 'next/router'
 
 import { Lock, ErrorOutline } from '@styled-icons/material-outlined'
 
-import { FormWrapper, FormLoading, FormError } from 'components/Form'
+import { FormWrapper, FormError } from 'components/Form'
 import Button from 'components/Button'
 import TextField from 'components/TextField'
 
 import { useState } from 'react'
-import GamesLoader from 'components/GamesLoader'
 import { FieldErrors, resetValidate } from 'utils/validations'
 import { signIn } from 'next-auth/client'
+import Spinner from 'components/Spinner'
 
 const FormResetPassword = () => {
   const [formError, setFormError] = useState('')
@@ -96,13 +96,7 @@ const FormResetPassword = () => {
           icon={<Lock />}
         />
         <Button type="submit" size="large" fullWidth disabled={loading}>
-          {loading ? (
-            <FormLoading>
-              <GamesLoader />
-            </FormLoading>
-          ) : (
-            <span>Reset Password</span>
-          )}
+          {loading ? <Spinner size={28} /> : <span>Reset Password</span>}
         </Button>
       </form>
     </FormWrapper>

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import { Email, Lock, ErrorOutline } from '@styled-icons/material-outlined'
 
-import { FormWrapper, FormLink, FormLoading, FormError } from 'components/Form'
+import { FormWrapper, FormLink, FormError } from 'components/Form'
 import Button from 'components/Button'
 import TextField from 'components/TextField'
 
@@ -11,8 +11,8 @@ import * as S from './styles'
 
 import { useState } from 'react'
 import { signIn } from 'next-auth/client'
-import GamesLoader from 'components/GamesLoader'
 import { FieldErrors, signInValidate } from 'utils/validations'
+import Spinner from 'components/Spinner'
 
 const FormSignIn = () => {
   const [formError, setFormError] = useState('')
@@ -89,13 +89,7 @@ const FormSignIn = () => {
         </Link>
 
         <Button type="submit" size="large" fullWidth disabled={loading}>
-          {loading ? (
-            <FormLoading>
-              <GamesLoader />
-            </FormLoading>
-          ) : (
-            <span>Sign in now</span>
-          )}
+          {loading ? <Spinner size={28} /> : <span>Sign in now</span>}
         </Button>
 
         <FormLink>

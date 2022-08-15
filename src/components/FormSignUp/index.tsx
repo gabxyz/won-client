@@ -9,14 +9,14 @@ import Link from 'next/link'
 import TextField from 'components/TextField'
 import Button from 'components/Button'
 
-import { FormWrapper, FormLink, FormLoading, FormError } from 'components/Form'
+import { FormWrapper, FormLink, FormError } from 'components/Form'
 import React, { useState } from 'react'
 import { UsersPermissionsRegisterInput } from 'graphql/generated/globalTypes'
 import { useMutation } from '@apollo/client'
 import { MUTATION_REGISTER } from 'graphql/mutations/register'
-import GamesLoader from 'components/GamesLoader'
 import { signIn } from 'next-auth/client'
 import { FieldErrors, signUpValidate } from 'utils/validations'
+import Spinner from 'components/Spinner'
 
 const FormSignUp = () => {
   const [formError, setFormError] = useState('')
@@ -115,13 +115,7 @@ const FormSignUp = () => {
           icon={<Lock />}
         />
         <Button type="submit" size="large" fullWidth disabled={loading}>
-          {loading ? (
-            <FormLoading>
-              <GamesLoader />
-            </FormLoading>
-          ) : (
-            <span>Sign up now</span>
-          )}
+          {loading ? <Spinner size={28} /> : <span>Sign up now</span>}
         </Button>
         <FormLink>
           Already have an account?{' '}
