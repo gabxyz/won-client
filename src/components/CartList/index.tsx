@@ -1,7 +1,7 @@
 import Button from 'components/Button'
 import Empty from 'components/Empty'
 import GameItem from 'components/GameItem'
-import GamesLoader from 'components/GamesLoader'
+import Spinner from 'components/Spinner'
 import { useCart } from 'hooks/use-cart'
 import Link from 'next/link'
 
@@ -17,7 +17,7 @@ const CartList = ({ hasButton = false }: CartListProps) => {
   if (loading) {
     return (
       <S.Loading>
-        <GamesLoader />
+        <Spinner />
       </S.Loading>
     )
   }

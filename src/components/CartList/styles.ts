@@ -14,6 +14,7 @@ export const Wrapper = styled.div<WrapperProps>`
     display: flex;
     flex-direction: column;
     align-self: start;
+    border-radius: ${theme.border.radius};
 
     ${isEmpty &&
     css`
@@ -46,15 +47,14 @@ export const Loading = styled.div`
     height: 40rem;
     min-width: 56rem;
 
-    svg {
-      height: 10rem;
-      width: 10rem;
-    }
+    ${media.lessThan('medium')`
+      min-width: 10rem;
+    `}
   `}
 `
 
 export const GamesList = styled.div`
-  max-height: 40rem;
+  max-height: 42rem;
   overflow-y: auto;
 `
 
@@ -68,10 +68,10 @@ export const Footer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-radius: ${theme.border.radius};
 
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.medium};
-      padding: ${theme.spacings.small};
     `};
   `}
 `
