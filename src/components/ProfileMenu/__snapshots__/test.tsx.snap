@@ -15,6 +15,14 @@ exports[`<ProfileMenu /> should render the heading 1`] = `
   border-bottom: 0.1rem solid #EAEAEA;
 }
 
+.c0 a:first-child {
+  border-top-left-radius: 0.4rem;
+}
+
+.c0 a:last-child {
+  border-top-right-radius: 0.4rem;
+}
+
 .c1 {
   cursor: pointer;
   -webkit-text-decoration: none;
@@ -49,6 +57,14 @@ exports[`<ProfileMenu /> should render the heading 1`] = `
     -ms-flex-direction: column;
     flex-direction: column;
     border: 0;
+  }
+
+  .c0 a:first-child {
+    border-radius: 0.4rem 0.4rem 0 0;
+  }
+
+  .c0 a:last-child {
+    border-radius: 0 0 0.4rem 0.4rem;
   }
 
   .c0 a:not(:last-child) {

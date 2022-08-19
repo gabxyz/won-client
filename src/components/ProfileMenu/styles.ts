@@ -6,9 +6,24 @@ export const Nav = styled.nav`
     display: flex;
     border-bottom: 0.1rem solid ${theme.colors.lightGray};
 
+    a:first-child {
+      border-top-left-radius: ${theme.border.radius};
+    }
+    a:last-child {
+      border-top-right-radius: ${theme.border.radius};
+    }
+
     ${media.greaterThan('medium')`
       flex-direction: column;
       border: 0;
+
+      a:first-child {
+        border-radius: ${theme.border.radius} ${theme.border.radius} 0 0;
+      }
+
+      a:last-child {
+        border-radius: 0 0 ${theme.border.radius} ${theme.border.radius};
+      }
 
       a:not(:last-child) {
         border-bottom: 0.1rem solid ${theme.colors.lightGray};

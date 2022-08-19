@@ -19,5 +19,10 @@ export const Content = styled.div`
     background-color: ${theme.colors.white};
     color: ${theme.colors.black};
     padding: ${theme.spacings.xsmall};
+    border-radius: 0 0 ${theme.border.radius} ${theme.border.radius};
+
+    ${media.greaterThan('medium')`
+      border-radius: ${theme.border.radius};
+    `}
   `}
 `

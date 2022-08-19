@@ -6,6 +6,14 @@ export const Nav = styled.nav`
     flex-direction: column;
     width: 26rem;
 
+    a:first-child {
+      border-radius: ${theme.border.radius} ${theme.border.radius} 0 0;
+    }
+
+    a:last-child {
+      border-radius: 0 0 ${theme.border.radius} ${theme.border.radius};
+    }
+
     a:not(:last-child) {
       border-bottom: 0.1rem solid ${theme.colors.lightGray};
     }
