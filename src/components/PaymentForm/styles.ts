@@ -10,8 +10,7 @@ export const Body = styled.div`
   ${({ theme }) => css`
     background: ${theme.colors.white};
     padding: ${theme.spacings.small};
-    border-top-left-radius: ${theme.border.radius};
-    border-top-right-radius: ${theme.border.radius};
+    border-radius: ${theme.border.radius} ${theme.border.radius} 0 0;
     font-size: ${theme.font.sizes.small};
 
     ${media.greaterThan('medium')`
@@ -28,13 +27,23 @@ export const Footer = styled.div`
     font-weight: ${theme.font.bold};
     background: ${tint(0.2, theme.colors.lightGray)};
     color: ${theme.colors.black};
-    border-bottom-left-radius: ${theme.border.radius};
-    border-bottom-right-radius: ${theme.border.radius};
+    border-radius: 0 0 ${theme.border.radius} ${theme.border.radius};
 
     ${ButtonStyles.Wrapper} {
       padding-left: ${theme.spacings.xxsmall};
       padding-right: ${theme.spacings.xxsmall};
       outline: 0;
     }
+  `}
+`
+
+export const Error = styled.p`
+  ${({ theme }) => css`
+    color: ${theme.colors.red};
+    font-size: ${theme.font.sizes.xsmall};
+    padding-top: ${theme.spacings.xsmall};
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
   `}
 `
