@@ -7,8 +7,8 @@ export const Main = styled.main`
 
     ${media.greaterThan('medium')`
       display: grid;
-      grid-template-columns: 32rem 1fr;
-      gap: calc(${theme.grid.gutter} * 2);
+      grid-template-columns: 1fr 2fr;
+      gap: ${theme.grid.gutter};
     `}
   `}
 `
@@ -23,6 +23,8 @@ export const Content = styled.div`
 
     ${media.greaterThan('medium')`
       border-radius: ${theme.border.radius};
+      min-width: 75%;
+      overflow: scroll;
     `}
   `}
 `
