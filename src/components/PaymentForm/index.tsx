@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { CardElement } from '@stripe/react-stripe-js'
+import React, { useEffect, useState } from 'react'
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { StripeCardElementChangeEvent } from '@stripe/stripe-js'
 import { ErrorOutline, ShoppingCart } from '@styled-icons/material-outlined'
 
@@ -10,6 +10,7 @@ import Heading from 'components/Heading'
 import * as S from './styles'
 import { createPaymentIntent } from 'utils/stripe/methods'
 import { Session } from 'next-auth'
+import { FormLoading } from 'components/Form'
 
 type PaymentFormProps = {
   session: Session
@@ -17,9 +18,13 @@ type PaymentFormProps = {
 
 const PaymentForm = ({ session }: PaymentFormProps) => {
   const { items } = useCart()
+  const stripe = useStripe()
+  const elements = useElements()
+
   const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false)
   const [disabled, setDisabled] = useState(true)
-  const [, setClientSecret] = useState('')
+  const [clientSecret, setClientSecret] = useState('')
   const [freeGames, setFreeGames] = useState(false)
 
   useEffect(() => {
@@ -54,48 +59,77 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
     setError(event.error ? event.error.message : '')
   }
 
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault()
+    setLoading(true)
+
+    // if freeGames, saves in strapi db
+    // redirects to success page
+
+    const payload = await stripe!.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements!.getElement(CardElement)!
+      }
+    })
+
+    if (payload.error) {
+      setError(`Payment failed ${payload.error.message}`)
+      setLoading(false)
+    } else {
+      setError(null)
+      setLoading(false)
+
+      console.log('HEHE, NOICE!')
+
+      // save purchase in strapi db
+      // redirects to success page
+    }
+  }
+
   return (
     <S.Wrapper>
-      <S.Body>
-        <Heading color="black" lineBottom size="small">
-          Payment
-        </Heading>
+      <form onSubmit={handleSubmit}>
+        <S.Body>
+          <Heading color="black" lineBottom size="small">
+            Payment
+          </Heading>
 
-        {freeGames ? (
-          <S.FreeGames>Only free games, click buy and enjoy!</S.FreeGames>
-        ) : (
-          <CardElement
-            options={{
-              hidePostalCode: true,
-              style: {
-                base: {
-                  fontSize: '14px'
+          {freeGames ? (
+            <S.FreeGames>Only free games, click buy and enjoy!</S.FreeGames>
+          ) : (
+            <CardElement
+              options={{
+                hidePostalCode: true,
+                style: {
+                  base: {
+                    fontSize: '14px'
+                  }
                 }
-              }
-            }}
-            onChange={handleChange}
-          />
-        )}
+              }}
+              onChange={handleChange}
+            />
+          )}
 
-        {error && (
-          <S.Error>
-            <ErrorOutline size={18} />
-            {error}
-          </S.Error>
-        )}
-      </S.Body>
-      <S.Footer>
-        <Button as="a" fullWidth minimal>
-          Continue shopping
-        </Button>
-        <Button
-          fullWidth
-          icon={<ShoppingCart />}
-          disabled={!freeGames && (disabled || !!error)}
-        >
-          Buy now
-        </Button>
-      </S.Footer>
+          {error && (
+            <S.Error>
+              <ErrorOutline size={18} />
+              {error}
+            </S.Error>
+          )}
+        </S.Body>
+        <S.Footer>
+          <Button as="a" fullWidth minimal>
+            Continue shopping
+          </Button>
+          <Button
+            fullWidth
+            icon={loading ? <FormLoading /> : <ShoppingCart />}
+            disabled={!freeGames && (disabled || !!error)}
+          >
+            {!loading && <span>Buy now</span>}
+          </Button>
+        </S.Footer>
+      </form>
     </S.Wrapper>
   )
 }
