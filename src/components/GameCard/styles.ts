@@ -56,6 +56,9 @@ export const Content = styled.div`
 `
 
 export const Info = styled.a`
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
   max-width: calc(100% - 2.5rem);
   text-decoration: none;
 `
@@ -85,7 +88,7 @@ export const FavButton = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
     position: absolute;
-    right: -1rem;
+    right: -0.6rem;
     top: -0.5rem;
 
     svg {
@@ -119,7 +122,7 @@ const priceModifiers = {
   promotional: (theme: DefaultTheme) => css`
     color: ${theme.colors.gray};
     text-decoration: line-through;
-    margin-right: ${theme.spacings.xsmall};
+    margin-right: ${theme.spacings.xxsmall};
   `
 }
 
