@@ -11,10 +11,11 @@ const Spinner = ({ size = 38 }: SpinnerProps) => (
     viewBox="-3 -3 42 42"
     xmlns="http://www.w3.org/2000/svg"
     stroke="#F231A5"
+    strokeWidth="3"
   >
     <title>Loading...</title>
     <g fill="none" fillRule="evenodd">
-      <g transform="translate(1 1)" strokeWidth="3">
+      <g transform="translate(1 1)">
         <circle strokeOpacity=".2" cx="18" cy="18" r="18" />
         <path d="M36 18c0-9.94-8.06-18-18-18">
           <animateTransform
