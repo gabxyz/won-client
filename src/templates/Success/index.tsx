@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useCart } from 'hooks/use-cart'
 
 import Base from 'templates/Base'
@@ -27,7 +27,7 @@ const Success = ({
   const { clearCart } = useCart()
   const [fakeLoading, setFakeLoading] = useState(true)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const timer = setInterval(() => {
       setFakeLoading(false)
       clearCart()
