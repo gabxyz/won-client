@@ -1,17 +1,17 @@
+import Link from 'next/link'
+import { useLayoutEffect, useState } from 'react'
+import { useCart } from 'hooks/use-cart'
+
 import Base from 'templates/Base'
 
+import Spinner from 'components/Spinner'
 import Showcase from 'components/Showcase'
-
 import { GameCardProps } from 'components/GameCard'
 import { Container } from 'components/Container'
-
 import { HighlightProps } from 'components/Highlight'
+import { Done } from '@styled-icons/material-outlined'
 
 import * as S from './styles'
-import Spinner from 'components/Spinner'
-import { useLayoutEffect, useState } from 'react'
-import { Done } from '@styled-icons/material-outlined'
-import Link from 'next/link'
 
 export type SuccessTemplateProps = {
   recommendedTitle: string
@@ -24,17 +24,19 @@ const Success = ({
   recommendedGames,
   recommendedHighlight
 }: SuccessTemplateProps) => {
+  const { clearCart } = useCart()
   const [fakeLoading, setFakeLoading] = useState(true)
 
   useLayoutEffect(() => {
     const timer = setInterval(() => {
       setFakeLoading(false)
+      clearCart()
     }, 1300)
 
     return () => {
       clearInterval(timer)
     }
-  }, [])
+  })
 
   return (
     <Base>
