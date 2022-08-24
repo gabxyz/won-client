@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { StripeCardElementChangeEvent } from '@stripe/stripe-js'
 import { ErrorOutline, ShoppingCart } from '@styled-icons/material-outlined'
@@ -18,6 +19,7 @@ type PaymentFormProps = {
 
 const PaymentForm = ({ session }: PaymentFormProps) => {
   const { items } = useCart()
+  const { push } = useRouter()
   const stripe = useStripe()
   const elements = useElements()
 
@@ -65,6 +67,10 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
 
     // if freeGames, saves in strapi db
     // redirects to success page
+    if (freeGames) {
+      push('/success')
+      return
+    }
 
     const payload = await stripe!.confirmCardPayment(clientSecret, {
       payment_method: {
@@ -79,10 +85,9 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
       setError(null)
       setLoading(false)
 
-      console.log('HEHE, NOICE!')
-
       // save purchase in strapi db
       // redirects to success page
+      push('/success')
     }
   }
 
